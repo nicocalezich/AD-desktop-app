@@ -58,6 +58,20 @@ public class ConexionStock extends Conexion {
 		
 	}
 	
+	public void actualizaraPrecioStock(String id, double nuevoPrecio) throws SQLException {
+			
+			crearConexion();				
+	
+			String query = "UPDATE `stock` SET `Precio`='"+nuevoPrecio+"' WHERE ID='"+id+"'";
+			
+			java.sql.Statement stm = con.createStatement();
+								
+			stm.executeUpdate(query);
+			
+			con.close();	
+			
+		}	
+	
 	public void restarStock(String id, double dif) throws ClassNotFoundException, SQLException {
 		
 		crearConexion();			

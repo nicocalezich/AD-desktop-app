@@ -202,7 +202,7 @@ public class Stock extends JPanel {
 				
 				if(row >= 0)  {		
 									
-					String[] opciones = {"Producto","Cantidad"};
+					String[] opciones = {"Producto","Cantidad","Precio"};
 									
 					int respuesta = JOptionPane.showOptionDialog(null,"Seleccione el campo que desea editar","Editar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, opciones, null);
 									
@@ -244,7 +244,25 @@ public class Stock extends JPanel {
 							e1.printStackTrace();
 							} 											
 						}
-					}		
+					}
+					
+					else if (respuesta == 2) {												
+						
+						String nuevoPrecio = (String) JOptionPane.showInputDialog(null, "Edite el nombre del producto","Editar", JOptionPane.PLAIN_MESSAGE,null,null,table.getValueAt(row, 3));
+						nuevoPrecio = nuevoPrecio.replace(',','.');
+						
+						if (!nuevoPrecio.isEmpty()) {
+																				
+						try {
+							conexion.actualizaraPrecioStock(id, Double.valueOf(nuevoPrecio));		
+							llamar();
+							} 
+						
+						catch (SQLException  | ClassNotFoundException e1) {						
+							e1.printStackTrace();
+							} 											
+						}
+					}
 					
 				}
 				

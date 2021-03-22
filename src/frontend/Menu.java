@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Toolkit;
+import java.awt.SystemColor;
 
 public class Menu extends JFrame {
 
@@ -32,6 +33,7 @@ public class Menu extends JFrame {
 	private JButton btnCalculadora;
 	private JButton btnVentas;
 	private JButton btnNuevaVenta;
+	private JButton btnOpciones;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -268,9 +270,33 @@ public class Menu extends JFrame {
 				btnCalculadora.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 15));
 				btnVentas.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 15));
 				btnNuevaVenta.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 15));
+				btnOpciones.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 15));
 				
 			}
 		});
+		
+		btnOpciones = new JButton("   Opciones");
+		btnOpciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				menu.abrirCambioContra();
+			}
+		});
+		btnOpciones.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent arg0) {
+				btnOpciones.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 16));
+			}
+		});
+		btnOpciones.setOpaque(false);
+		btnOpciones.setHorizontalAlignment(SwingConstants.LEFT);
+		btnOpciones.setForeground(Color.WHITE);
+		btnOpciones.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 15));
+		btnOpciones.setFocusable(false);
+		btnOpciones.setBorder(null);
+		btnOpciones.setBackground(SystemColor.controlDkShadow);
+		btnOpciones.setBounds(926, 5, 143, 40);
+		contentPane.add(btnOpciones);
 		lblNewLabel_1.setIcon(new ImageIcon(Menu.class.getResource("/images2/test2.png")));
 		lblNewLabel_1.setOpaque(true);
 		lblNewLabel_1.setFont(new Font("Yu Gothic Medium", Font.ITALIC, 33));
@@ -316,8 +342,7 @@ public class Menu extends JFrame {
 			btonClientes.setText(clientes);
 			btnProveedores.setText(proveedores+" •");
 			btnCalculadora.setText(calculadora);
-			btnVentas.setText(ventas);
-			
+			btnVentas.setText(ventas);			
 					
 		}
 		
@@ -328,7 +353,7 @@ public class Menu extends JFrame {
 			btonClientes.setText(clientes);
 			btnProveedores.setText(proveedores);
 			btnCalculadora.setText(calculadora+" •");
-			btnVentas.setText(ventas);			
+			btnVentas.setText(ventas);	
 					
 		}
 		
@@ -342,6 +367,7 @@ public class Menu extends JFrame {
 							
 		}
 		
+			
 		else if (opcion.equals(pedidos)) {
 			
 			btnStock.setText(stock);
